@@ -52,7 +52,7 @@ class UserController {
     async getReviews(req: Request, res: Response) {
         const { username } = req.params;
 
-        User.findOne({ username: username }, { reviews: { $reverseArray: "$reviews" } }).exec((err, user) => {
+        User.findOne({ username: username }, { reviews: { $reverseArray: [reviews] } }).exec((err, user) => {
             if (err) {
                 console.log('error', err)
             }
