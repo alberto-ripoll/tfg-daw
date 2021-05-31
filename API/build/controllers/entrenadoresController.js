@@ -30,7 +30,7 @@ class EntrenadoresController {
     }
     getFiltrados(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let entrenadores = yield User_1.default.find({ isEntrenador: true }, { especialidades: 1, ciudad: 1, rate: 1, status: 1, profile_pic: 1, username: 1 });
+            let entrenadores = yield User_1.default.find({ isEntrenador: true }, { especialidad: 1, ciudad: 1, rate: 1, status: 1, profile_pic: 1, username: 1 });
             let array_filtros = JSON.parse(req.params.filtro);
             console.log(array_filtros);
             let entrenadoresEncontrados = [];

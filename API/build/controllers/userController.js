@@ -329,6 +329,7 @@ class UserController {
                 });
                 i++;
             }
+            res.json(true);
         });
     }
     updatePesos(req, res) {
@@ -367,6 +368,7 @@ class UserController {
                 });
                 i++;
             }
+            res.json(true);
         });
     }
     getPesos(req, res) {
