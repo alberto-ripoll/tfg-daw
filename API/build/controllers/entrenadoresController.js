@@ -43,20 +43,23 @@ class EntrenadoresController {
             }
             //Si me envian filtros de especialidad
             if (array_filtros.especialidades.length >= 1) {
+                let entrenadoresFiltrados = [];
                 entrenadoresEncontrados.forEach(entrenador => {
                     let coincide = false;
                     let especialidad_entrenador = entrenador.especialidad;
+                    console.log(entrenador);
                     for (let index = 0; index < array_filtros.especialidades.length; index++) {
                         let especialidad_filtros = array_filtros.especialidades[index];
-                        if (especialidad_entrenador == especialidad_filtros) {
+                        if (especialidad_entrenador.toLowerCase() === especialidad_filtros.toLowerCase()) {
                             coincide = true;
                         }
                     }
-                    if (!coincide) {
-                        const indice = entrenadoresEncontrados.map(e => e.username).indexOf(entrenador.username);
-                        entrenadoresEncontrados.splice(indice, 1);
+                    if (coincide) {
+                        entrenadoresFiltrados.push(entrenador);
                     }
                 });
+                console.log('ENTRENADORES FILTRADOS,', entrenadoresFiltrados);
+                return res.json(entrenadoresFiltrados);
             }
             console.log(entrenadoresEncontrados);
             return res.json(entrenadoresEncontrados);
