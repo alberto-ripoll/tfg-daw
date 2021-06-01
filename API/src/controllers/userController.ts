@@ -317,10 +317,11 @@ class UserController {
         let id = req["userId"]
         let pesos = req.body;
         let nuevosPesos = [];
-        let date = new Date;
 
         for (let index = 0; index < 7; index++) {
-            let fecha = ((date.getDate()) - index) + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+            let date = new Date;
+            date.setDate(date.getDate() - index);
+            let fecha = ((date.getDate())) + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
             await User.findByIdAndUpdate(id, {
                 $pull: {
                     pesos: { fecha: fecha }
@@ -339,7 +340,9 @@ class UserController {
         }
         let i = 0;
         for (let index = 6; index > -1; index--) {
-            let fecha = ((date.getDate()) - index) + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+            let date = new Date;
+            date.setDate(date.getDate() - index);
+            let fecha = ((date.getDate())) + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
             await User.findByIdAndUpdate(id, {
                 $push: {
                     pesos: {
