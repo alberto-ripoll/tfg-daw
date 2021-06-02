@@ -46,7 +46,7 @@ class Servidor {
         this.app.use('/api/chat', chatsRoutes);
         this.app.use('/api/salas', salasRoutes);
         this.app.use('/', express.static(__dirname + '/public'));
-        this.app.use('/:anything', express.static(__dirname + '/public'));
+        this.app.use(express.static(__dirname + '/public'));
 
     }
 

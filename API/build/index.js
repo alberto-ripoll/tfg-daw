@@ -42,7 +42,7 @@ class Servidor {
         this.app.use('/api/chat', chatsRoutes_1.default);
         this.app.use('/api/salas', salasRoutes_1.default);
         this.app.use('/', express_1.default.static(__dirname + '/public'));
-        this.app.use('/:anything', express_1.default.static(__dirname + '/public'));
+        this.app.use(express_1.default.static(__dirname + '/public'));
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
